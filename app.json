@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "club360",
-    "slug": "club360",
-    "version": "1.1.0",
+    "name": "ownguard",
+    "slug": "ownguard",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -52,7 +52,7 @@
         "expo-notifications",
         {
           "icon": "./assets/favicon.png",
-          "color": "#ADFF87",
+          "color": "#6E01EF",
           "sounds": []
         }
       ],
@@ -66,7 +66,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "ecc71a33-8a1e-4960-88f5-ece982414529"
+        "projectId": "76f4d746-b1b7-4866-8ff9-85b363330de6"
       }
     },
     "owner": "nathanpalatin"

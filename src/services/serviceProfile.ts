@@ -1,11 +1,11 @@
-import { apiProfile } from './apiProfile'
+import { api } from './api'
 import { FormDataProps } from '@dtos/FormDataDTO'
 
 import { storageAuthTokenGet } from '@storage/storageAuthToken'
 
 export const getProfile = async () => {
 	const token = await storageAuthTokenGet()
-	const { data } = await apiProfile.get('/profile', {
+	const { data } = await api.get('/profile', {
 		headers: {
 			Authorization: token,
 		},
@@ -15,7 +15,7 @@ export const getProfile = async () => {
 
 export const createProfile = async (data: FormDataProps) => {
 	const token = await storageAuthTokenGet()
-	const res = await apiProfile.post('/profile', data, {
+	const res = await api.post('/profile', data, {
 		headers: {
 			Authorization: token,
 		},
@@ -25,7 +25,7 @@ export const createProfile = async (data: FormDataProps) => {
 
 export const updateUser = async (data: FormDataProps) => {
 	const token = await storageAuthTokenGet()
-	const res = await apiProfile.patch('/profile', data, {
+	const res = await api.patch('/profile', data, {
 		headers: {
 			Authorization: token,
 		},

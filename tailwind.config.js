@@ -14,9 +14,9 @@ module.exports = {
 				header: '#01A6DE',
 			},
 			fontFamily: {
-				bold: 'Manrope_700Bold',
-				medium: 'Manrope_500Medium',
-				regular: 'Manrope_400Regular',
+				bold: 'Inter_700Bold',
+				medium: 'Inter_500Medium',
+				regular: 'Inter_400Regular',
 			},
 		},
 	},

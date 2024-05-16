@@ -5,10 +5,10 @@ import 'react-native-gesture-handler'
 import './global.css'
 
 import {
-	Manrope_400Regular,
-	Manrope_500Medium,
-	Manrope_700Bold,
-} from '@expo-google-fonts/manrope'
+	Inter_400Regular,
+	Inter_500Medium,
+	Inter_700Bold,
+} from '@expo-google-fonts/inter'
 
 import { useFonts } from 'expo-font'
 
@@ -23,9 +23,9 @@ import { AppLoading } from '@components/AppLoading'
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
-		Manrope_400Regular,
-		Manrope_500Medium,
-		Manrope_700Bold,
+		Inter_400Regular,
+		Inter_500Medium,
+		Inter_700Bold,
 	})
 
 	return (

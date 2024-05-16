@@ -2,11 +2,11 @@ import axios from 'axios'
 
 import { AppError } from '@utils/AppError'
 
-const apiProfile = axios.create({
-	baseURL: process.env.EXPO_PUBLIC_API_PROFILE_URL,
+const api = axios.create({
+	baseURL: process.env.EXPO_PUBLIC_API_BASEURL,
 })
 
-apiProfile.interceptors.response.use(
+api.interceptors.response.use(
 	(response) => response,
 	(error) => {
 		if (error.response && error.response.data) {
@@ -17,4 +17,4 @@ apiProfile.interceptors.response.use(
 	},
 )
 
-export { apiProfile }
+export { api }

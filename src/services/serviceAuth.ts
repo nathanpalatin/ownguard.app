@@ -1,7 +1,7 @@
-import { apiAuth } from './apiAuth'
+import { api } from './api'
 
 export const login = async (email: string, password: string) => {
-	const res = await apiAuth.post('/auth/login', { email, password })
+	const res = await api.post('/users/login', { email, password })
 	return res
 }
 
@@ -10,6 +10,6 @@ export const registerUser = async (
 	email: string,
 	password: string,
 ) => {
-	const res = await apiAuth.post('/auth/register', { name, email, password })
+	const res = await api.post('/users', { name, email, password })
 	return res
 }
