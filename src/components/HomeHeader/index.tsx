@@ -18,7 +18,7 @@ export function HomeHeader() {
 	const navigation = useNavigation<AppNavigatorRoutesProps>()
 
 	return (
-		<View className="flex flex-row items-center bg-zinc-950 pt-20 pb-4 px-6 ">
+		<View className="flex flex-row items-center bg-zinc-900 pt-20 pb-4 px-6 ">
 			{isLoadingUserStorageData ? (
 				<Skeleton
 					w={8}

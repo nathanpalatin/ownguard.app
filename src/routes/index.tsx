@@ -11,11 +11,10 @@ export function Routes() {
 	const { user } = useAuth()
 
 	const theme = DefaultTheme
-
-	theme.colors.background = 'bg-zinc-800'
+	theme.colors.background = 'primary'
 
 	return (
-		<View className="flex-1 bg-zinc-900">
+		<View className="flex-1 bg-zinc-950">
 			<StatusBar barStyle={'light-content'} />
 			<NavigationContainer theme={theme}>
 				{user.email ? <AppRoutes /> : <AuthRoutes />}

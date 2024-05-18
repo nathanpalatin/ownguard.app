@@ -1,59 +1,38 @@
-import { Center, HStack, Skeleton, VStack } from 'native-base'
-import { SafeAreaView } from 'react-native'
+import { useEffect, useRef } from 'react'
+import { Animated, type View } from 'react-native'
 
-export function Loading() {
+import { cn } from '@utils/nativecn'
+
+function Skeleton({
+	className,
+	...props
+}: { className?: string } & React.ComponentPropsWithoutRef<typeof View>) {
+	const fadeAnim = useRef(new Animated.Value(0.5)).current
+
+	useEffect(() => {
+		Animated.loop(
+			Animated.sequence([
+				Animated.timing(fadeAnim, {
+					toValue: 1,
+					duration: 1000,
+					useNativeDriver: true,
+				}),
+				Animated.timing(fadeAnim, {
+					toValue: 0.5,
+					duration: 1000,
+					useNativeDriver: true,
+				}),
+			]),
+		).start()
+	}, [fadeAnim])
+
 	return (
-		<SafeAreaView>
-			<Center w="100%">
-				<VStack
-					w="100%"
-					space={6}
-					_dark={{
-						borderColor: 'coolGray.500',
-					}}
-					_light={{
-						borderColor: 'coolGray.200',
-					}}
-				>
-					<HStack
-						bg={'gray.500'}
-						p={'2'}
-						alignItems={'center'}
-						pr={'4'}
-						rounded={'md'}
-						mb={'2'}
-					>
-						<Skeleton
-							startColor={'gray.400'}
-							endColor={'gray.600'}
-							w={10}
-							h={10}
-							rounded={'full'}
-							mr={'4'}
-							ml={'2'}
-						/>
-
-						<VStack flex={1}>
-							<Skeleton
-								startColor={'gray.400'}
-								endColor={'gray.600'}
-								rounded={'sm'}
-								mt={1}
-								w={'40%'}
-								h={3}
-							/>
-							<Skeleton
-								startColor={'gray.400'}
-								endColor={'gray.600'}
-								rounded={'sm'}
-								mt={1}
-								w={'80%'}
-								h={3}
-							/>
-						</VStack>
-					</HStack>
-				</VStack>
-			</Center>
-		</SafeAreaView>
+		<Animated.View
+			className={cn('bg-muted rounded-md', className)}
+			style={[{ opacity: fadeAnim }]}
+			{...props}
+		/>
 	)
 }
+
+export { Skeleton }

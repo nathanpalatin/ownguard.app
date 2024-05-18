@@ -1,19 +1,10 @@
 import { useState } from 'react'
-
-import {
-	HStack,
-	VStack,
-	Text,
-	Heading,
-	Image,
-	Icon,
-	Pressable,
-	Skeleton,
-} from 'native-base'
+import { View, Text, Image, Pressable } from 'react-native'
 
 import { Entypo } from '@expo/vector-icons'
 
 import { UserPhoto } from '@components/UserPhoto'
+import { Skeleton } from '@components/Loading'
 
 import { PostProps } from '@dtos/PostDTO'
 import defaultYUserPhotoImg from '@assets/userPhotoDefault.png'
@@ -30,76 +21,12 @@ export function Post({
 	const [like, setLike] = useState(liked)
 
 	if (loading) {
-		return (
-			<VStack my={5} flex={1}>
-				<HStack px={6} alignItems={'center'}>
-					<Skeleton
-						startColor={'gray.700'}
-						endColor={'gray.500'}
-						rounded={'full'}
-						mt={1}
-						w={10}
-						h={10}
-					/>
-					<VStack ml={'2'}>
-						<Skeleton
-							startColor={'gray.700'}
-							endColor={'gray.500'}
-							rounded={'sm'}
-							mt={1}
-							w={24}
-							h={3}
-						/>
-						<Skeleton
-							startColor={'gray.700'}
-							endColor={'gray.500'}
-							rounded={'sm'}
-							mt={1}
-							w={12}
-							h={3}
-						/>
-					</VStack>
-				</HStack>
-				<VStack py={2} px={6} ml={'2'}>
-					<Skeleton
-						startColor={'gray.700'}
-						endColor={'gray.500'}
-						rounded={'sm'}
-						mt={1}
-						w={'container'}
-						h={3}
-					/>
-					<Skeleton
-						startColor={'gray.700'}
-						endColor={'gray.500'}
-						fadeDuration={0.1}
-						rounded={'sm'}
-						mt={1}
-						w={'64'}
-						h={3}
-					/>
-					<Skeleton
-						startColor={'gray.700'}
-						endColor={'gray.500'}
-						rounded={'sm'}
-						mt={1}
-						w={12}
-						h={3}
-					/>
-				</VStack>
-				<Skeleton
-					fadeDuration={0.1}
-					startColor={'gray.700'}
-					endColor={'gray.500'}
-					h={'80'}
-				/>
-			</VStack>
-		)
+		return <Skeleton className="w-36 h-4 bg-black" />
 	}
 
 	return (
-		<VStack my={6}>
-			<HStack px={6} alignItems={'center'}>
+		<View className="my-6">
+			<View className="flex flex-row px-6 items-start">
 				<UserPhoto
 					source={
 						avatar
@@ -108,51 +35,42 @@ export function Post({
 					}
 					size={8}
 				/>
-				<VStack ml={'2'}>
-					<Text fontSize="sm" fontWeight={'medium'} color={'gray.500'}>
+				<View className="ml-2">
+					<Text className="text-sm font-medium text-zinc-500">
 						{name}{' '}
-						<Icon as={Entypo} name="check" color={'blue.700'} size={'xs'} />
+						<Entypo name="check" color={'blue.700'} className="size-10" />
 					</Text>
-					<Text fontSize="xs" color={'gray.300'} fontFamily={'body'}>
-						há {time}
-					</Text>
-				</VStack>
-			</HStack>
-			<Heading
-				fontFamily={'body'}
-				px={8}
-				py={3}
-				fontSize={'xs'}
-				color={'gray.400'}
-			>
+					<Text className="text-sm text-zinc-400 font-light">há {time}</Text>
+				</View>
+			</View>
+			<Text className="font-medium px-8 py-3 text-xs text-zinc-400">
 				{legend}
-			</Heading>
+			</Text>
 
 			<Image
 				source={{ uri: image, cache: 'force-cache' }}
-				w={'full'}
-				resizeMode={'cover'}
-				h={'96'}
+				className="w-full h-96 object-cover"
 				alt=""
 			/>
 
-			<HStack px={6} mt={3}>
-				<Pressable mr={2} onPress={() => setLike(!like)}>
+			<View className="flex flex-row px-6 mt-3">
+				<Pressable className="mr-2" onPress={() => setLike(!like)}>
 					{liked ? (
-						<Icon as={Entypo} name="heart" color={'red.700'} size={'xl'} />
+						<Entypo name="heart" color={'red.700'} size={26} />
 					) : (
-						<Icon as={Entypo} name="heart-outlined" size={'xl'} />
+						<Entypo name="heart-outlined" size={26} />
 					)}
 				</Pressable>
 				<Pressable onPress={() => { }}>
-					<Icon as={Entypo} name="message" size={'xl'} />
+					<Entypo name="message" size={26} />
 				</Pressable>
-			</HStack>
-			<HStack px={6} mt={3}>
-				<Text fontSize="xs" color={'gray.300'} fontFamily={'body'}>
+			</View>
+			<View className="px-6 mt-2">
+				<Text className="text-xs text-zinc-500 font-medium">{name} bora?</Text>
+				<Text className="text-xs text-zinc-500 font-medium">
 					{comments} comentários
 				</Text>
-			</HStack>
-		</VStack>
+			</View>
+		</View>
 	)
 }

@@ -151,11 +151,7 @@ export function EditProfile() {
 				const userPhotoUloadForm = new FormData()
 				userPhotoUloadForm.append('file', photoFile)
 
-				if (user.avatar) {
-					await updatePhotoProfile(userPhotoUloadForm)
-				} else {
-					await sendPhotoProfile(userPhotoUloadForm)
-				}
+				await sendPhotoProfile(userPhotoUloadForm)
 
 				updateAvatarInStorage(photoSelected.assets[0].uri)
 				setUserPhoto(photoSelected.assets[0].uri)
@@ -185,7 +181,7 @@ export function EditProfile() {
 				<ScreenHeader
 					secondOption
 					avatar={user.avatar}
-					handlePressOption={() => navigation.goBack()}
+					handlePressOption={() => setOpenModal(!openModal)}
 					logo
 				/>
 

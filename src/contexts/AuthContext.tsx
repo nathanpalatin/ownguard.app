@@ -2,6 +2,7 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
 
 import { storageAuthTokenSave } from '@storage/storageAuthToken'
+
 import {
 	storageUserGet,
 	storageUserRemove,
@@ -11,6 +12,7 @@ import {
 import { UserDTO } from '@dtos/UserDTO'
 
 import { login } from '@services/serviceAuth'
+import { api } from '@services/api'
 
 export type AuthContextDataProps = {
 	user: UserDTO
@@ -35,6 +37,9 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 	async function storageUserAndToken(userData: UserDTO, token: string) {
 		try {
 			setIsLoadingUserStorageData(true)
+
+			api.defaults.headers.common.Authorization = token
+
 			await storageAuthTokenSave(token)
 			await storageUserSave(userData)
 			setUser(userData)
