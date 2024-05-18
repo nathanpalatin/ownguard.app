@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { ScrollView, View } from 'react-native'
 
-import { HStack, VStack } from 'native-base'
-
 import { useAuth } from '@hooks/useAuth'
 
 import { useSocket } from '@contexts/socket'
@@ -24,7 +22,7 @@ export function Home() {
 
 	return (
 		<>
-			<VStack flex={1} mb={'6'}>
+			<View className="flex-1 mb-6">
 				<HomeHeader />
 				<ScrollView showsVerticalScrollIndicator={false}>
 					<Post
@@ -40,10 +38,8 @@ export function Home() {
 							'https://holmesplace20prod.s3.eu-central-1.amazonaws.com/58281a7c9995609b5f4e7df426d13767461457d0_PEREX_5_exercicios_para_melhorar_a_sua_performance_no_padel.jpg'
 						}
 					/>
-
-					<HStack my={3} />
 				</ScrollView>
-			</VStack>
+			</View>
 
 			{isOpen && (
 				<Sheet onClose={toggleSheet}>

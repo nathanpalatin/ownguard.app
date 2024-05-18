@@ -34,8 +34,8 @@ export function Post({
 			<VStack my={5} flex={1}>
 				<HStack px={6} alignItems={'center'}>
 					<Skeleton
-						startColor={'gray.100'}
-						endColor={'gray.200'}
+						startColor={'gray.700'}
+						endColor={'gray.500'}
 						rounded={'full'}
 						mt={1}
 						w={10}
@@ -43,16 +43,16 @@ export function Post({
 					/>
 					<VStack ml={'2'}>
 						<Skeleton
-							startColor={'gray.100'}
-							endColor={'gray.200'}
+							startColor={'gray.700'}
+							endColor={'gray.500'}
 							rounded={'sm'}
 							mt={1}
 							w={24}
 							h={3}
 						/>
 						<Skeleton
-							startColor={'gray.100'}
-							endColor={'gray.200'}
+							startColor={'gray.700'}
+							endColor={'gray.500'}
 							rounded={'sm'}
 							mt={1}
 							w={12}
@@ -62,16 +62,16 @@ export function Post({
 				</HStack>
 				<VStack py={2} px={6} ml={'2'}>
 					<Skeleton
-						startColor={'gray.100'}
-						endColor={'gray.200'}
+						startColor={'gray.700'}
+						endColor={'gray.500'}
 						rounded={'sm'}
 						mt={1}
 						w={'container'}
 						h={3}
 					/>
 					<Skeleton
-						startColor={'gray.100'}
-						endColor={'gray.200'}
+						startColor={'gray.700'}
+						endColor={'gray.500'}
 						fadeDuration={0.1}
 						rounded={'sm'}
 						mt={1}
@@ -79,8 +79,8 @@ export function Post({
 						h={3}
 					/>
 					<Skeleton
-						startColor={'gray.100'}
-						endColor={'gray.200'}
+						startColor={'gray.700'}
+						endColor={'gray.500'}
 						rounded={'sm'}
 						mt={1}
 						w={12}
@@ -89,8 +89,8 @@ export function Post({
 				</VStack>
 				<Skeleton
 					fadeDuration={0.1}
-					startColor={'gray.100'}
-					endColor={'gray.200'}
+					startColor={'gray.700'}
+					endColor={'gray.500'}
 					h={'80'}
 				/>
 			</VStack>
@@ -144,7 +144,7 @@ export function Post({
 						<Icon as={Entypo} name="heart-outlined" size={'xl'} />
 					)}
 				</Pressable>
-				<Pressable onPress={() => {}}>
+				<Pressable onPress={() => { }}>
 					<Icon as={Entypo} name="message" size={'xl'} />
 				</Pressable>
 			</HStack>

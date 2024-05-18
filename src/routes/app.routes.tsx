@@ -6,6 +6,7 @@ import {
 import { Home } from '@screens/Home'
 import { Chats } from '@screens/Chats'
 import { Profile } from '@screens/Profile'
+import { Stories } from '@screens/Stories'
 import { Settings } from '@screens/Settings'
 import { EditProfile } from '@screens/EditProfile'
 import { Notifications } from '@screens/Notifications'
@@ -31,6 +32,8 @@ export function AppRoutes() {
 				<Screen name="chats" component={Chats} />
 				<Screen name="profile" component={Profile} />
 				<Screen name="editProfile" component={EditProfile} />
+				<Screen name="stories" component={Stories} />
+
 				<Screen name="notifications" component={Notifications} />
 			</Group>
 

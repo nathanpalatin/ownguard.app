@@ -67,7 +67,7 @@ export function EditProfile() {
 			await updateUser(updatedFormData)
 			const userUpdated = { ...user, ...updatedFormData }
 			await updateUserProfile(userUpdated)
-			navigation.pop()
+			navigation.navigate('profile')
 		} catch (error) {
 			const isAppError = error instanceof AppError
 			const title = isAppError
@@ -185,7 +185,7 @@ export function EditProfile() {
 				<ScreenHeader
 					secondOption
 					avatar={user.avatar}
-					handlePressOption={() => setOpenModal(!openModal)}
+					handlePressOption={() => navigation.goBack()}
 					logo
 				/>
 
@@ -373,7 +373,7 @@ export function EditProfile() {
 								<Button
 									title="Cancelar"
 									variant="solid"
-									onPress={() => navigation.pop()}
+									onPress={() => navigation.goBack()}
 								/>
 								<Button
 									onPress={handleProfileUpdate}

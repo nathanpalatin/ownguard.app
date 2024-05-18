@@ -76,7 +76,7 @@ export function ForgetPassword() {
 					/>
 				</View>
 
-				<Pressable onPress={() => navigation.pop()}>
+				<Pressable onPress={() => navigation.goBack()}>
 					<Text className="text-zinc-100 text-center">
 						Lembrou a senha? <Text className="font-bold">Fazer login</Text>
 					</Text>

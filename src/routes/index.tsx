@@ -1,4 +1,4 @@
-import { ImageBackground, StatusBar } from 'react-native'
+import { StatusBar, View } from 'react-native'
 
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 
@@ -10,16 +10,16 @@ import { AuthRoutes } from './auth.routes'
 export function Routes() {
 	const { user } = useAuth()
 
+	const theme = DefaultTheme
+
+	theme.colors.background = 'bg-zinc-800'
+
 	return (
-		<ImageBackground
-			className="flex-1"
-			source={require('@assets/background.png')}
-			defaultSource={require('@assets/background.png')}
-		>
+		<View className="flex-1 bg-zinc-900">
 			<StatusBar barStyle={'light-content'} />
-			<NavigationContainer theme={DefaultTheme}>
+			<NavigationContainer theme={theme}>
 				{user.email ? <AppRoutes /> : <AuthRoutes />}
 			</NavigationContainer>
-		</ImageBackground>
+		</View>
 	)
 }

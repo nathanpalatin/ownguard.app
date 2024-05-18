@@ -22,15 +22,15 @@ export function Profile() {
 
 	return (
 		<ImageBackground
-			source={require('@assets/background.png')}
+			defaultSource={require('@assets/background.png')}
 			className="flex-1"
 		>
 			<View className="mt-24 px-8">
 				<View className="flex flex-row mb-6 gap-6 items-end justify-end">
-					<Pressable onPress={() => navigation.push('editProfile')}>
+					<Pressable onPress={() => navigation.navigate('editProfile')}>
 						<Edit2Icon color={'#fff'} size={20} />
 					</Pressable>
-					<Pressable onPress={() => navigation.push('settings')}>
+					<Pressable onPress={() => navigation.navigate('settings')}>
 						<Settings color={'#fff'} size={20} />
 					</Pressable>
 				</View>

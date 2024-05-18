@@ -9,7 +9,10 @@ export function Chats() {
 	const navigation = useNavigation<AppNavigatorRoutesProps>()
 	return (
 		<View>
-			<ScreenHeader title="Mensagens" handlePress={() => navigation.pop()} />
+			<ScreenHeader
+				title="Mensagens"
+				handlePressOption={() => navigation.goBack()}
+			/>
 		</View>
 	)
 }

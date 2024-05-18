@@ -2,6 +2,10 @@
   "extends": "@rocketseat/eslint-config/react",
   "rules": {
     "camelcase": "off",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
     "@typescript-eslint/naming-convention": "off"
   }
 }

@@ -16,8 +16,6 @@ type Props = {
 	logo?: boolean
 }
 
-const PHOTO_SIZE = 8
-
 export function ScreenHeader({
 	secondOption,
 	handlePressOption,
@@ -27,17 +25,16 @@ export function ScreenHeader({
 	const { isLoadingUserStorageData } = useAuth()
 
 	return (
-		<View className="pt-20 pb-5 bg-header px-8">
-			<View className="flex my-2 flex-row justify-between items-center">
+		<View className=" bg-zinc-900">
+			<View className="pt-16 pb-5 px-8 flex flex-row justify-between items-center">
 				<Pressable onPress={handlePressOption}>
 					<ChevronLeft size={28} color={'#ffffff90'} />
 				</Pressable>
 
-				{title && (
-					<Text className="flex-1 text-center text-zinc-100 text-lg font-bold">
-						{title}
-					</Text>
-				)}
+				<Text className="flex-1 text-center text-zinc-100 text-2xl font-bold">
+					{title}
+				</Text>
+
 				{secondOption && (
 					<View className="flex flex-row gap-3 items-center">
 						<Pressable onPress={handlePressOption}>
@@ -45,23 +42,28 @@ export function ScreenHeader({
 						</Pressable>
 						{isLoadingUserStorageData ? (
 							<Skeleton
-								w={PHOTO_SIZE}
+								w={8}
 								fadeDuration={0.1}
+								startColor={'gray.500'}
+								endColor={'gray.700'}
 								mr={'2'}
-								h={PHOTO_SIZE}
+								h={8}
 								rounded={'full'}
 							/>
 						) : (
 							<UserPhoto
-								source={avatar ? { uri: avatar } : defaultYUserPhotoImg}
-								size={PHOTO_SIZE}
+								source={
+									avatar
+										? { uri: avatar, cache: 'force-cache' }
+										: defaultYUserPhotoImg
+								}
+								size={8}
 								alt="Foto de perfil"
 							/>
 						)}
 					</View>
 				)}
 			</View>
-			<View className="h-px w-full border border-zinc-100/10 my-1" />
 		</View>
 	)
 }

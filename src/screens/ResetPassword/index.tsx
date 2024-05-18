@@ -55,14 +55,13 @@ export function ResetPassword() {
 	return (
 		<ImageBackground
 			defaultSource={require('@assets/background.png')}
-			source={require('@assets/background.png')}
 			className="flex-1"
 		>
 			<View className="flex-1 px-10 py-20">
 				<View className="flex flex-row justify-start items-center">
 					<Pressable
 						className="flex flex-row items-center"
-						onPress={() => navigation.pop()}
+						onPress={() => navigation.goBack()}
 					>
 						<Icon
 							as={Entypo}

@@ -50,7 +50,6 @@ export function CompleteAccount() {
 	return (
 		<ImageBackground
 			defaultSource={require('@assets/background.png')}
-			source={require('@assets/background.png')}
 			className="flex-1"
 		>
 			<View className="flex-1 px-10 py-20">

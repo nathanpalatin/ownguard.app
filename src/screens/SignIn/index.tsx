@@ -58,7 +58,7 @@ export function SignIn() {
 				borderRadius: 16,
 				marginBottom: 100,
 			})
-		} finally {
+
 			setIsLoading(false)
 		}
 	}
@@ -71,7 +71,6 @@ export function SignIn() {
 		>
 			<ImageBackground
 				defaultSource={require('@assets/background.png')}
-				source={require('@assets/background.png')}
 				className="flex-1"
 			>
 				<View className="flex-1 px-10 py-20">
@@ -112,7 +111,7 @@ export function SignIn() {
 					</View>
 
 					<Pressable
-						onPress={() => navigation.push('forgetPassword')}
+						onPress={() => navigation.navigate('forgetPassword')}
 						className="mb-10 self-center"
 					>
 						<Text className="text-sm text-zinc-50 font-bold">
@@ -128,7 +127,10 @@ export function SignIn() {
 						onPress={handleSubmit(handleSignIn)}
 					/>
 
-					<Pressable className="mt-4" onPress={() => navigation.push('signUp')}>
+					<Pressable
+						className="mt-4"
+						onPress={() => navigation.navigate('signUp')}
+					>
 						<Text className="text-sm text-zinc-100 font-bold text-center">
 							Crie sua conta
 						</Text>

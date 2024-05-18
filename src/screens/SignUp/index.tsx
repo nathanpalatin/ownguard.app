@@ -97,7 +97,6 @@ export function SignUp() {
 		>
 			<ImageBackground
 				defaultSource={require('@assets/background.png')}
-				source={require('@assets/background.png')}
 				className="flex-1"
 			>
 				<ScrollView
@@ -207,7 +206,7 @@ export function SignUp() {
 					</View>
 
 					<Pressable
-						onPress={() => navigation.pop()}
+						onPress={() => navigation.goBack()}
 						className="mb-10 self-center flex items-center gap-2"
 					>
 						<Text className="text-sm text-zinc-50 font-bold">
