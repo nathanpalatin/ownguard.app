@@ -4,7 +4,6 @@ import {
 	Pressable,
 	Text,
 	View,
-	Image,
 	ScrollView,
 	KeyboardAvoidingView,
 	Platform,
@@ -19,26 +18,27 @@ import * as yup from 'yup'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { createProfile } from '@services/serviceProfile'
-
 import { AppError } from '@utils/AppError'
 
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 import { useAuth } from '@hooks/useAuth'
 
-import Logo from '@assets/logo.png'
 import { registerUser } from '@services/serviceAuth'
 
 type FormDataProps = {
 	name: string
 	email: string
+	username: string
+	phone: string
 	password: string
 	passwordConfirm: string
 }
 
 const signUpSchema = yup.object({
 	name: yup.string().required('Informe o nome.'),
+	username: yup.string().required('Informe o seu nick.'),
+	phone: yup.string().required('Informe o seu telefone.'),
 	email: yup.string().required('Informe o e-mail').email('E-mail inválido.'),
 	password: yup
 		.string()
@@ -64,15 +64,19 @@ export function SignUp() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormDataProps>({
-
 		resolver: yupResolver(signUpSchema),
 	})
 
-	async function handleSignUp({ name, email, password }: FormDataProps) {
+	async function handleSignUp({
+		name,
+		email,
+		username,
+		phone,
+		password,
+	}: FormDataProps) {
 		try {
 			setIsLoading(true)
-			await registerUser(name, email, password)
-			await createProfile({ name, email, sex: '', phone: '', padel_level: '', favorite_club: '', city: '', state: '', birthdate: '', cpf: '' })
+			await registerUser(name, email, phone, username, password)
 			singIn(email, password)
 		} catch (error) {
 			setIsLoading(false)
@@ -92,8 +96,8 @@ export function SignUp() {
 			keyboardVerticalOffset={-200}
 		>
 			<ImageBackground
-				defaultSource={require('@assets/background-secondary.png')}
-				source={require('@assets/background-secondary.png')}
+				defaultSource={require('@assets/background.png')}
+				source={require('@assets/background.png')}
 				className="flex-1"
 			>
 				<ScrollView
@@ -102,7 +106,6 @@ export function SignUp() {
 					showsVerticalScrollIndicator={false}
 				>
 					<View className="shadow-lg bg-zinc-100/20 mb-4 justify-center items-center rounded-2xl pt-10 pb-4 px-4">
-						<Image source={Logo} alt="logo" />
 						<Text className="text-zinc-100 text-xl font-regular mb-6">
 							Crie sua conta
 						</Text>
@@ -137,6 +140,34 @@ export function SignUp() {
 									rounded={'full'}
 									onChangeText={onChange}
 									errorMessage={errors.email?.message}
+								/>
+							)}
+						/>
+
+						<Controller
+							control={control}
+							name="username"
+							rules={{ required: 'Informe seu nickname' }}
+							render={({ field: { onChange } }) => (
+								<Input
+									placeholder="Digite seu username"
+									rounded={'full'}
+									onChangeText={onChange}
+									errorMessage={errors.username?.message}
+								/>
+							)}
+						/>
+
+						<Controller
+							control={control}
+							name="phone"
+							rules={{ required: 'Informe seu telefone' }}
+							render={({ field: { onChange } }) => (
+								<Input
+									placeholder="Digite seu telefone"
+									rounded={'full'}
+									onChangeText={onChange}
+									errorMessage={errors.phone?.message}
 								/>
 							)}
 						/>

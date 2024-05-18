@@ -3,7 +3,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack/lib/ty
 
 import { SignIn } from '@screens/SignIn'
 import { SignUp } from '@screens/SignUp'
-import { Welcome } from '@screens/Welcome'
 import { ForgetPassword } from '@screens/ForgetPassword'
 
 import { AuthRoutesTypes } from '@dtos/AuthRoutes'
@@ -22,7 +21,6 @@ export function AuthRoutes() {
 				headerShown: false,
 			}}
 		>
-			<Screen name="welcome" component={Welcome} />
 			<Screen name="signIn" component={SignIn} />
 			<Screen name="signUp" component={SignUp} />
 			<Screen name="completeAccount" component={CompleteAccount} />

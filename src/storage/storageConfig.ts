@@ -1,4 +1,4 @@
-const USER_STORAGE = '@club360:user'
-const AUTH_TOKEN_STORAGE = '@club360:token'
+const USER_STORAGE = '@ownguard:user'
+const AUTH_TOKEN_STORAGE = '@ownguard:token'
 
 export { USER_STORAGE, AUTH_TOKEN_STORAGE }

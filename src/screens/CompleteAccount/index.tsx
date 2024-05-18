@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import { ImageBackground, Pressable, View, Text, Image } from 'react-native'
+import { ImageBackground, Pressable, View, Text } from 'react-native'
 import { useToast } from 'native-base'
 
 import { AppError } from '@utils/AppError'
-
-import Logo from '@assets/logo.png'
 
 type FormData = {
 	email: string
@@ -51,13 +49,12 @@ export function CompleteAccount() {
 
 	return (
 		<ImageBackground
-			defaultSource={require('@assets/background-secondary.png')}
-			source={require('@assets/background-secondary.png')}
+			defaultSource={require('@assets/background.png')}
+			source={require('@assets/background.png')}
 			className="flex-1"
 		>
 			<View className="flex-1 px-10 py-20">
 				<View className="my-40 justify-center items-center pt-10 pb-4 px-8">
-					<Image source={Logo} alt="logo" />
 					<Text className="text-zinc-100 text-xl font-bold mb-6">
 						Conta criada com sucesso!
 					</Text>

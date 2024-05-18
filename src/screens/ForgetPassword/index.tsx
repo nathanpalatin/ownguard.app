@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ImageBackground, Pressable, View, Text, Image } from 'react-native'
+import { ImageBackground, Pressable, View, Text } from 'react-native'
 import { useToast } from 'native-base'
 
 import { useNavigation } from '@react-navigation/native'
@@ -11,8 +11,6 @@ import { Input } from '@components/Input'
 import { Button } from '@components/Button'
 
 import { AppError } from '@utils/AppError'
-
-import Logo from '@assets/logo.png'
 
 type FormData = {
 	email: string
@@ -54,13 +52,12 @@ export function ForgetPassword() {
 	const navigation = useNavigation<AuthNavigatorRoutesProps>()
 	return (
 		<ImageBackground
-			defaultSource={require('@assets/background-secondary.png')}
-			source={require('@assets/background-secondary.png')}
+			defaultSource={require('@assets/background.png')}
+			source={require('@assets/background.png')}
 			className="flex-1"
 		>
 			<View className="flex-1 px-10 pt-20">
 				<View className="shadow-lg bg-zinc-100/20 mt-40 mb-4 justify-center items-center rounded-2xl pt-10 pb-4 px-4">
-					<Image source={Logo} alt="logo" />
 					<Text className="text-zinc-100 text-xl font-regular mb-6">
 						Recupere seu acesso
 					</Text>

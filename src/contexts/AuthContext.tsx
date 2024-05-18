@@ -6,18 +6,15 @@ import {
 	storageUserGet,
 	storageUserRemove,
 	storageUserSave,
-	updateAvatarInStorage,
 } from '@storage/storageUser'
 
 import { UserDTO } from '@dtos/UserDTO'
 
 import { login } from '@services/serviceAuth'
-import { getProfile } from '@services/serviceProfile'
-import { getPhotoProfile } from '@services/serviceStorage'
 
 export type AuthContextDataProps = {
 	user: UserDTO
-	singIn: (email: string, password: string) => Promise<void>
+	singIn: (credential: string, password: string) => Promise<void>
 	signOut: () => Promise<void>
 	updateUserProfile: (userUpdated: UserDTO) => Promise<void>
 	isLoadingUserStorageData: boolean
@@ -35,20 +32,11 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 	const [user, setUser] = useState<UserDTO>({} as UserDTO)
 	const [isLoadingUserStorageData, setIsLoadingUserStorageData] = useState(true)
 
-	async function storageUserAndToken(token: string) {
+	async function storageUserAndToken(userData: UserDTO, token: string) {
 		try {
 			setIsLoadingUserStorageData(true)
 			await storageAuthTokenSave(token)
-			const res = await getProfile()
-
-			const res2 = await getPhotoProfile()
-			if (res2) {
-				await updateAvatarInStorage(res.data)
-			}
-
-			await storageUserSave(res.data[0])
-
-			setUser(res.data[0])
+			setUser(userData)
 		} catch (error) {
 			throw error
 		} finally {
@@ -56,11 +44,11 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 		}
 	}
 
-	async function singIn(email: string, password: string) {
+	async function singIn(credential: string, password: string) {
 		try {
-			const { data } = await login(email, password)
-			if (data.data.token) {
-				storageUserAndToken(data.data.token)
+			const { data } = await login(credential, password)
+			if (data.token) {
+				storageUserAndToken(data.user, data.token)
 			}
 		} catch (error) {
 			throw error

@@ -1,10 +1,10 @@
-import { apiStorage } from './apiStorage'
+import { api } from './api'
 
 import { storageAuthTokenGet } from '@storage/storageAuthToken'
 
 export const sendPhotoProfile = async (file: FormData) => {
 	const token = await storageAuthTokenGet()
-	const res = await apiStorage.post('/upload', file, {
+	const res = await api.post('/upload', file, {
 		headers: {
 			Authorization: token,
 		},
@@ -14,7 +14,7 @@ export const sendPhotoProfile = async (file: FormData) => {
 
 export const getPhotoProfile = async () => {
 	const token = await storageAuthTokenGet()
-	const res = await apiStorage.get('/upload', {
+	const res = await api.get('/upload', {
 		headers: {
 			Authorization: token,
 		},
@@ -24,7 +24,7 @@ export const getPhotoProfile = async () => {
 
 export const updatePhotoProfile = async (file: FormData) => {
 	const token = await storageAuthTokenGet()
-	const res = await apiStorage.patch('/upload', file, {
+	const res = await api.patch('/upload', file, {
 		headers: {
 			Authorization: token,
 		},
@@ -34,7 +34,7 @@ export const updatePhotoProfile = async (file: FormData) => {
 
 export const removePhotoProfile = async () => {
 	const token = await storageAuthTokenGet()
-	const res = await apiStorage.delete('/upload', {
+	const res = await api.delete('/upload', {
 		headers: {
 			Authorization: token,
 		},

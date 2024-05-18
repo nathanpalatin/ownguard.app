@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import {
-	Image,
 	ImageBackground,
 	Pressable,
 	View,
@@ -21,8 +20,6 @@ import { Input } from '@components/Input'
 
 import { useAuth } from '@hooks/useAuth'
 import { AppError } from '@utils/AppError'
-
-import Logo from '@assets/logo.png'
 
 type FormData = {
 	email: string
@@ -73,13 +70,12 @@ export function SignIn() {
 			keyboardVerticalOffset={-200}
 		>
 			<ImageBackground
-				defaultSource={require('@assets/background-secondary.png')}
-				source={require('@assets/background-secondary.png')}
+				defaultSource={require('@assets/background.png')}
+				source={require('@assets/background.png')}
 				className="flex-1"
 			>
 				<View className="flex-1 px-10 py-20">
 					<View className="shadow-lg bg-zinc-100/20 mt-40 mb-4 justify-center items-center rounded-2xl pt-10 pb-4 px-4">
-						<Image source={Logo} alt="logo" />
 						<Text className="text-zinc-100 text-xl font-regular mb-6">
 							Acesse sua conta
 						</Text>
@@ -92,6 +88,7 @@ export function SignIn() {
 								<Input
 									placeholder="Usuário"
 									rounded={'full'}
+									keyboardAppearance="dark"
 									onChangeText={onChange}
 									errorMessage={errors.email?.message}
 								/>
@@ -106,6 +103,7 @@ export function SignIn() {
 								<Input
 									placeholder="Senha"
 									onChangeText={onChange}
+									keyboardAppearance="dark"
 									secureTextEntry
 									errorMessage={errors.password?.message}
 								/>

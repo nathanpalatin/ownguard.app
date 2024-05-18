@@ -2,7 +2,6 @@ import {
 	ImageBackground,
 	View,
 	Text,
-	Image,
 	ScrollView,
 	Pressable,
 } from 'react-native'
@@ -23,7 +22,7 @@ export function Profile() {
 
 	return (
 		<ImageBackground
-			source={require('@assets/background-profile.png')}
+			source={require('@assets/background.png')}
 			className="flex-1"
 		>
 			<View className="mt-24 px-8">
@@ -96,7 +95,6 @@ export function Profile() {
 							<Text className="font-bold mb-6 w-20 text-zinc-400">
 								Raquete Padel 700
 							</Text>
-							<Image alt="" source={require('@assets/raquete.png')} />
 						</View>
 
 						<View className="mt-4 w-80">

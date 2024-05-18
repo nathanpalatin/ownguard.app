@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Image } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import { Skeleton } from 'native-base'
 
 import { ChevronLeft, Edit } from 'lucide-react-native'
@@ -23,25 +23,15 @@ export function ScreenHeader({
 	handlePressOption,
 	title,
 	avatar,
-	logo,
 }: Props) {
 	const { isLoadingUserStorageData } = useAuth()
 
 	return (
 		<View className="pt-20 pb-5 bg-header px-8">
 			<View className="flex my-2 flex-row justify-between items-center">
-				{logo ? (
-					<Image
-						source={require('@assets/logo.png')}
-						className="w-28 h-10"
-						resizeMode="cover"
-						alt="logo"
-					/>
-				) : (
-					<Pressable onPress={handlePressOption}>
-						<ChevronLeft size={28} color={'#ffffff90'} />
-					</Pressable>
-				)}
+				<Pressable onPress={handlePressOption}>
+					<ChevronLeft size={28} color={'#ffffff90'} />
+				</Pressable>
 
 				{title && (
 					<Text className="flex-1 text-center text-zinc-100 text-lg font-bold">

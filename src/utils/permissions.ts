@@ -34,7 +34,7 @@ async function getPermissions() {
 		}
 
 		const token = (await Notifications.getExpoPushTokenAsync()).data
-		console.log('Token de notificação:', token)
+		console.assert('Token de notificação:', token)
 	} catch (error) {
 		console.log('Erro ao solicitar permissões:', error)
 	}

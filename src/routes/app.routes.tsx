@@ -5,7 +5,6 @@ import {
 
 import { Home } from '@screens/Home'
 import { Chats } from '@screens/Chats'
-import { Logged } from '@screens/Logged'
 import { Profile } from '@screens/Profile'
 import { Settings } from '@screens/Settings'
 import { EditProfile } from '@screens/EditProfile'
@@ -25,12 +24,11 @@ export function AppRoutes() {
 				headerShown: false,
 				autoHideHomeIndicator: true,
 			}}
-			initialRouteName="logged"
+			initialRouteName="home"
 		>
 			<Group>
 				<Screen name="home" component={Home} />
 				<Screen name="chats" component={Chats} />
-				<Screen name="logged" component={Logged} />
 				<Screen name="profile" component={Profile} />
 				<Screen name="editProfile" component={EditProfile} />
 				<Screen name="notifications" component={Notifications} />
