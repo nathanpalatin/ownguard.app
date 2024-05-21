@@ -5,7 +5,6 @@ import {
 
 import { Home } from '@screens/Home'
 import { Chats } from '@screens/Chats'
-import { Profile } from '@screens/Profile'
 import { Stories } from '@screens/Stories'
 import { Settings } from '@screens/Settings'
 import { EditProfile } from '@screens/EditProfile'
@@ -30,7 +29,6 @@ export function AppRoutes() {
 			<Group>
 				<Screen name="home" component={Home} />
 				<Screen name="chats" component={Chats} />
-				<Screen name="profile" component={Profile} />
 				<Screen name="editProfile" component={EditProfile} />
 				<Screen name="stories" component={Stories} />
 
